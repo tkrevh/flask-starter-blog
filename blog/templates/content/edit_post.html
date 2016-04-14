@@ -1,0 +1,19 @@
+{% extends "content/base.html" %}
+
+{% block post_content %}
+  <div class="page-header">
+    <h1>Change post</h1>
+  </div>
+  
+  <form class="form form-horizontal" action="{{ url_for('edit_post', id=id) }}" method="POST" name="form">
+    {{ form.csrf_token }}
+
+    {{ wtf.horizontal_field(form.title) }}
+    {{ wtf.horizontal_field(form.text, rows=20, columns=100, field_width=5) }}
+    {{ wtf.horizontal_field(form.tags, rows=10, field_width=5) }}
+
+    <div class="col-lg-offset-2">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+  </form>
+{% endblock %}
